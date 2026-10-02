@@ -10,6 +10,10 @@ Getting from a fresh clone to running inference on the Pi Zero.
 
 ## Step 1: Install the toolchain
 
+> **Using Docker instead?** [docker.md](docker.md) has a container with the cross-compiler,
+> `vc4asm`, a Linux `my-install`, and the Python deps, for x86_64 Linux or Apple Silicon macOS.
+> Skip to step 2 and run the commands through `docker/pitorch.sh`.
+
 **ARM cross-compiler** — compiles C to bare-metal ARM:
 - macOS: install via the [cs107e Homebrew formula](https://web.archive.org/web/20210414133806/http://cs107e.github.io/guides/install/mac/)
 - Linux: download from [ARM developer](https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2) and add to `PATH`

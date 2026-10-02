@@ -17,6 +17,7 @@ cd examples
 ```
 
 See [docs/setup.md](docs/setup.md) for full setup (toolchain, SD card, weights).
+See [docs/docker.md](docs/docker.md) to build in Docker instead of installing the toolchain (x86_64 Linux or Apple Silicon macOS).
 See [docs/hardware.md](docs/hardware.md) for 4-Pi wiring.
 
 ## Inference

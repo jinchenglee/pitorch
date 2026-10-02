@@ -5,6 +5,7 @@
 #   ./run.sh generate                        # single Pi (default Pi 0)
 #   ./run.sh train                           # single Pi
 #   PI_DEVICE=2 ./run.sh generate            # choose which Pi
+#   PI_PORT=/dev/ttyUSB0 ./run.sh generate   # explicit serial port (Linux)
 #   ./run.sh train-distributed               # 4 Pis, logs to examples/logs/
 #   ./run.sh generate-distributed            # 4 Pis, interactive generation
 #
@@ -12,7 +13,7 @@ set -euo pipefail
 
 DEMO_DIR="$(cd "$(dirname "$0")" && pwd)"
 PITORCH_ROOT="$(cd "$DEMO_DIR/.." && pwd)"
-BOOTLOADER="$PITORCH_ROOT/tools/bin/my-install"
+BOOTLOADER="${PI_BOOTLOADER:-$PITORCH_ROOT/tools/bin/my-install}"
 KERNEL_DIR="$PITORCH_ROOT/pitorch/kernels"
 OPS_DIR="$PITORCH_ROOT/pitorch/ops/matvec"
 LOG_DIR="$DEMO_DIR/logs"
@@ -25,7 +26,7 @@ while read -r idx suffix label desc; do
     NAME_MAP[$idx]="$desc"
 done < "$PITORCH_ROOT/devices.conf"
 
-get_port() { echo "/dev/cu.usbserial-${PORT_MAP[$1]}"; }
+get_port() { echo "${PI_PORT:-/dev/cu.usbserial-${PORT_MAP[$1]}}"; }
 
 # ── Validate arguments ──
 if [ $# -lt 1 ]; then

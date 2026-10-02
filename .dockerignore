@@ -1,0 +1,6 @@
+# The image only holds the toolchain; the repo is bind-mounted at runtime.
+# Exception: the UART loader sources, which are built into the image.
+*
+!tools/bootloader/unix-side
+!tools/bootloader/pi-side/boot-defs.h
+!tools/bootloader/pi-side/boot-crc32.h
